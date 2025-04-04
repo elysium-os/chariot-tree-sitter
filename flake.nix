@@ -12,6 +12,7 @@
                     tree-sitter
                     python3
                     nodejs
+                    emscripten
                 ];
             };
         }

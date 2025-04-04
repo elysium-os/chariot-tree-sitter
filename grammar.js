@@ -41,26 +41,23 @@ module.exports = grammar({
     source_rules: ($) => seq("{", repeat($.source_rule), "}"),
     source_rule: ($) =>
       choice(
-        field("url", seq("url", ":", $.to_eol)),
-        field(
-          "type",
-          seq("type", ":", choice("tar.gz", "tar.xz", "git", "local")),
-        ),
-        field("patch", seq("patch", ":", $.to_eol)),
-        field("b2sum", seq("b2sum", ":", $.to_eol)),
-        field("commit", seq("commit", ":", $.to_eol)),
-        field("dependencies", seq("dependencies", $.dependencies)),
-        field("strap", seq("strap", $.block)),
+        seq("url", ":", $.to_eol),
+        seq("type", ":", choice("tar.gz", "tar.xz", "git", "local")),
+        seq("patch", ":", $.to_eol),
+        seq("b2sum", ":", $.to_eol),
+        seq("commit", ":", $.to_eol),
+        seq("dependencies", $.dependencies),
+        seq("strap", $.block),
       ),
 
     common_rules: ($) => seq("{", repeat($.common_rule), "}"),
     common_rule: ($) =>
       choice(
-        field("source", seq("source", ":", $.recipe_name)),
-        field("dependencies", seq("dependencies", $.dependencies)),
-        field("configure", seq("configure", $.block)),
-        field("build", seq("build", $.block)),
-        field("install", seq("install", $.block)),
+        seq("source", ":", $.recipe_name),
+        seq("dependencies", $.dependencies),
+        seq("configure", $.block),
+        seq("build", $.block),
+        seq("install", $.block),
       ),
   },
 });

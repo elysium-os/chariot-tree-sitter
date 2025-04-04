@@ -258,160 +258,132 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "url",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "url"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "to_eol"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "url"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "to_eol"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "type",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "type"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "tar.gz"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "tar.xz"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "git"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "local"
-                  }
-                ]
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "type"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "tar.gz"
+                },
+                {
+                  "type": "STRING",
+                  "value": "tar.xz"
+                },
+                {
+                  "type": "STRING",
+                  "value": "git"
+                },
+                {
+                  "type": "STRING",
+                  "value": "local"
+                }
+              ]
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "patch",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "patch"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "to_eol"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "patch"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "to_eol"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "b2sum",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "b2sum"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "to_eol"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "b2sum"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "to_eol"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "commit",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "commit"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "to_eol"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "commit"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "to_eol"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "dependencies",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "dependencies"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "dependencies"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "dependencies"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dependencies"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "strap",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "strap"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "strap"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         }
       ]
     },
@@ -439,93 +411,73 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "FIELD",
-          "name": "source",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "source"
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "recipe_name"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "source"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "recipe_name"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "dependencies",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "dependencies"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "dependencies"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "dependencies"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dependencies"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "configure",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "configure"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "configure"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "build",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "build"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "build"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         },
         {
-          "type": "FIELD",
-          "name": "install",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "install"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            ]
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "install"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         }
       ]
     }
