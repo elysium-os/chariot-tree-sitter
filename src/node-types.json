@@ -25,9 +25,18 @@
         {
           "type": "block_contents",
           "named": true
+        },
+        {
+          "type": "block_embed",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "block_embed",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "comment",
@@ -37,7 +46,34 @@
   {
     "type": "common_rule",
     "named": true,
-    "fields": {},
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "build",
+            "named": false
+          },
+          {
+            "type": "configure",
+            "named": false
+          },
+          {
+            "type": "dependencies",
+            "named": false
+          },
+          {
+            "type": "install",
+            "named": false
+          },
+          {
+            "type": "source",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -182,7 +218,42 @@
   {
     "type": "source_rule",
     "named": true,
-    "fields": {},
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "b2sum",
+            "named": false
+          },
+          {
+            "type": "commit",
+            "named": false
+          },
+          {
+            "type": "dependencies",
+            "named": false
+          },
+          {
+            "type": "patch",
+            "named": false
+          },
+          {
+            "type": "strap",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": false
+          },
+          {
+            "type": "url",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
@@ -218,7 +289,7 @@
     }
   },
   {
-    "type": "/",
+    "type": ")",
     "named": false
   },
   {
@@ -227,6 +298,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "@(",
     "named": false
   },
   {
@@ -266,15 +341,11 @@
     "named": false
   },
   {
-    "type": "host",
-    "named": false
-  },
-  {
     "type": "host/",
     "named": false
   },
   {
-    "type": "image",
+    "type": "image/",
     "named": false
   },
   {
@@ -311,10 +382,6 @@
   },
   {
     "type": "tar.xz",
-    "named": false
-  },
-  {
-    "type": "target",
     "named": false
   },
   {

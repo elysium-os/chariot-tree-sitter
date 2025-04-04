@@ -22,10 +22,11 @@ module.exports = grammar({
     // Helpers
     to_eol: ($) => /[^\n]*/,
     block: ($) => seq("{", optional($.block_contents), "}"),
+    block_embed: ($) => seq("@(", /[^\)]*/, ")"),
     block_contents: ($) =>
-      repeat1(choice(seq("{", $.block_contents, "}"), /[^\}]/)),
+      repeat1(choice($.block_embed, seq("{", $.block_contents, "}"), /[^\}]/)),
     dependency: ($) =>
-      seq(choice("source", "target", "host", "image"), "/", $.recipe_name),
+      seq(choice("source/", "target/", "host/", "image/"), $.recipe_name),
     dependencies: ($) => seq("[", repeat($.dependency), "]"),
 
     recipe_name: ($) => /[_a-zA-Z][_\.\-a-zA-Z0-9]*/,
@@ -41,23 +42,27 @@ module.exports = grammar({
     source_rules: ($) => seq("{", repeat($.source_rule), "}"),
     source_rule: ($) =>
       choice(
-        seq("url", ":", $.to_eol),
-        seq("type", ":", choice("tar.gz", "tar.xz", "git", "local")),
-        seq("patch", ":", $.to_eol),
-        seq("b2sum", ":", $.to_eol),
-        seq("commit", ":", $.to_eol),
-        seq("dependencies", $.dependencies),
-        seq("strap", $.block),
+        seq(field("key", "url"), ":", $.to_eol),
+        seq(
+          field("key", "type"),
+          ":",
+          choice("tar.gz", "tar.xz", "git", "local"),
+        ),
+        seq(field("key", "patch"), ":", $.to_eol),
+        seq(field("key", "b2sum"), ":", $.to_eol),
+        seq(field("key", "commit"), ":", $.to_eol),
+        seq(field("key", "dependencies"), $.dependencies),
+        seq(field("key", "strap"), $.block),
       ),
 
     common_rules: ($) => seq("{", repeat($.common_rule), "}"),
     common_rule: ($) =>
       choice(
-        seq("source", ":", $.recipe_name),
-        seq("dependencies", $.dependencies),
-        seq("configure", $.block),
-        seq("build", $.block),
-        seq("install", $.block),
+        seq(field("key", "source"), ":", $.recipe_name),
+        seq(field("key", "dependencies"), $.dependencies),
+        seq(field("key", "configure"), $.block),
+        seq(field("key", "build"), $.block),
+        seq(field("key", "install"), $.block),
       ),
   },
 });

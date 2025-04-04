@@ -91,11 +91,32 @@
         }
       ]
     },
+    "block_embed": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@("
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\)]*"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
     "block_contents": {
       "type": "REPEAT1",
       "content": {
         "type": "CHOICE",
         "members": [
+          {
+            "type": "SYMBOL",
+            "name": "block_embed"
+          },
           {
             "type": "SEQ",
             "members": [
@@ -128,25 +149,21 @@
           "members": [
             {
               "type": "STRING",
-              "value": "source"
+              "value": "source/"
             },
             {
               "type": "STRING",
-              "value": "target"
+              "value": "target/"
             },
             {
               "type": "STRING",
-              "value": "host"
+              "value": "host/"
             },
             {
               "type": "STRING",
-              "value": "image"
+              "value": "image/"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "/"
         },
         {
           "type": "SYMBOL",
@@ -261,8 +278,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "url"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "url"
+              }
             },
             {
               "type": "STRING",
@@ -278,8 +299,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "type"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "type"
+              }
             },
             {
               "type": "STRING",
@@ -312,8 +337,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "patch"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "patch"
+              }
             },
             {
               "type": "STRING",
@@ -329,8 +358,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "b2sum"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "b2sum"
+              }
             },
             {
               "type": "STRING",
@@ -346,8 +379,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "commit"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "commit"
+              }
             },
             {
               "type": "STRING",
@@ -363,8 +400,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "dependencies"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "dependencies"
+              }
             },
             {
               "type": "SYMBOL",
@@ -376,8 +417,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "strap"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "strap"
+              }
             },
             {
               "type": "SYMBOL",
@@ -414,8 +459,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "source"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "source"
+              }
             },
             {
               "type": "STRING",
@@ -431,8 +480,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "dependencies"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "dependencies"
+              }
             },
             {
               "type": "SYMBOL",
@@ -444,8 +497,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "configure"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "configure"
+              }
             },
             {
               "type": "SYMBOL",
@@ -457,8 +514,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "build"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "build"
+              }
             },
             {
               "type": "SYMBOL",
@@ -470,8 +531,12 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "install"
+              "type": "FIELD",
+              "name": "key",
+              "content": {
+                "type": "STRING",
+                "value": "install"
+              }
             },
             {
               "type": "SYMBOL",
