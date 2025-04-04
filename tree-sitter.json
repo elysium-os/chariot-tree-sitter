@@ -5,8 +5,7 @@
       "camelcase": "Chariot",
       "scope": "source.chariot",
       "file-types": [".chariot"],
-      "injection-regex": "^chariot$",
-      "highlights": "queries/highlights.scm"
+      "injection-regex": "^chariot$"
     }
   ],
   "metadata": {
@@ -20,7 +19,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/elysium-os/chariot-tree-sitter"
+      "repository": "https://github.com/elysium-os/chariot"
     }
   },
   "bindings": {
