@@ -1,12 +1,11 @@
 {
   "name": "tree-sitter-chariot",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Chariot DSL Tree Sitter",
-  "repository": "https://github.com/elysium-os/chariot-tree-sitter",
+  "repository": "https://github.com/elysium-os/chariot",
   "license": "MIT",
   "author": {
-    "name": "WuX",
-    "email": "wux@thenest.dev"
+    "name": "WuX"
   },
   "main": "bindings/node",
   "types": "bindings/node",
@@ -32,7 +31,7 @@
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.24.6"
+    "tree-sitter-cli": "^0.25.1"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.1"

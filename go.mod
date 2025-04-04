@@ -1,4 +1,4 @@
-module github.com/elysium-os/chariot-tree-sitter
+module github.com/elysium-os/chariot
 
 go 1.22
 

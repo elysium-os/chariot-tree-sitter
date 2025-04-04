@@ -1,21 +1,25 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
       "name": "chariot",
       "camelcase": "Chariot",
+      "title": "Chariot",
       "scope": "source.chariot",
-      "file-types": [".chariot"],
-      "injection-regex": "^chariot$"
+      "file-types": [
+        "chariot"
+      ],
+      "injection-regex": "^chariot$",
+      "class-name": "TreeSitterChariot"
     }
   ],
   "metadata": {
-    "version": "0.1.0",
+    "version": "1.0.0",
     "license": "MIT",
     "description": "Chariot DSL Tree Sitter",
     "authors": [
       {
-        "name": "WuX",
-        "email": "wux@thenest.dev"
+        "name": "WuX"
       }
     ],
     "links": {
@@ -28,6 +32,7 @@
     "node": true,
     "python": true,
     "rust": true,
-    "swift": true
+    "swift": true,
+    "zig": false
   }
 }
