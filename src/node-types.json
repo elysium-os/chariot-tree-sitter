@@ -1,130 +1,6 @@
 [
   {
-    "type": "block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "block_contents",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "block_contents",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "block_contents",
-          "named": true
-        },
-        {
-          "type": "block_embed",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "block_embed",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "common_rule",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "build",
-            "named": false
-          },
-          {
-            "type": "configure",
-            "named": false
-          },
-          {
-            "type": "dependencies",
-            "named": false
-          },
-          {
-            "type": "install",
-            "named": false
-          },
-          {
-            "type": "source",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "dependencies",
-          "named": true
-        },
-        {
-          "type": "recipe_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "common_rules",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "common_rule",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dependencies",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "dependency",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dependency",
+    "type": "code_block",
     "named": true,
     "fields": {},
     "children": {
@@ -132,44 +8,14 @@
       "required": true,
       "types": [
         {
-          "type": "recipe_name",
+          "type": "tok_code_block",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "directives",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "import_directive",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "import_directive",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "to_eol",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "recipe",
+    "type": "content",
     "named": true,
     "fields": {},
     "children": {
@@ -177,15 +23,87 @@
       "required": true,
       "types": [
         {
-          "type": "common_rules",
+          "type": "code",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fragment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
           "named": true
         },
         {
-          "type": "recipe_name",
+          "type": "list",
           "named": true
         },
         {
-          "type": "source_rules",
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "recipe_ref",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "fragment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "fragment",
+          "named": true
+        },
+        {
+          "type": "tok_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "recipe_ref",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tok_identifier",
           "named": true
         }
       ]
@@ -201,99 +119,60 @@
       "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "object",
           "named": true
         },
         {
-          "type": "directives",
-          "named": true
-        },
-        {
-          "type": "recipe",
+          "type": "recipe_ref",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "source_rule",
+    "type": "string",
     "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "b2sum",
-            "named": false
-          },
-          {
-            "type": "commit",
-            "named": false
-          },
-          {
-            "type": "dependencies",
-            "named": false
-          },
-          {
-            "type": "patch",
-            "named": false
-          },
-          {
-            "type": "strap",
-            "named": false
-          },
-          {
-            "type": "type",
-            "named": false
-          },
-          {
-            "type": "url",
-            "named": false
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "dependencies",
-          "named": true
-        },
-        {
-          "type": "to_eol",
+          "type": "tok_string",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "source_rules",
+    "type": "tok_code_block",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "source_rule",
+          "type": "close_tag",
+          "named": true
+        },
+        {
+          "type": "content",
+          "named": true
+        },
+        {
+          "type": "lang",
           "named": true
         }
       ]
     }
   },
   {
-    "type": ")",
+    "type": ",",
     "named": false
   },
   {
-    "type": "//",
+    "type": "/",
     "named": false
   },
   {
@@ -301,11 +180,11 @@
     "named": false
   },
   {
-    "type": "@(",
+    "type": "<",
     "named": false
   },
   {
-    "type": "@import",
+    "type": ">",
     "named": false
   },
   {
@@ -317,88 +196,24 @@
     "named": false
   },
   {
-    "type": "b2sum",
-    "named": false
-  },
-  {
-    "type": "build",
-    "named": false
-  },
-  {
-    "type": "commit",
-    "named": false
-  },
-  {
-    "type": "configure",
-    "named": false
-  },
-  {
-    "type": "dependencies",
-    "named": false
-  },
-  {
-    "type": "git",
-    "named": false
-  },
-  {
-    "type": "host/",
-    "named": false
-  },
-  {
-    "type": "image/",
-    "named": false
-  },
-  {
-    "type": "install",
-    "named": false
-  },
-  {
-    "type": "local",
-    "named": false
-  },
-  {
-    "type": "patch",
-    "named": false
-  },
-  {
-    "type": "recipe_name",
+    "type": "close_tag",
     "named": true
   },
   {
-    "type": "source",
-    "named": false
-  },
-  {
-    "type": "source/",
-    "named": false
-  },
-  {
-    "type": "strap",
-    "named": false
-  },
-  {
-    "type": "tar.gz",
-    "named": false
-  },
-  {
-    "type": "tar.xz",
-    "named": false
-  },
-  {
-    "type": "target/",
-    "named": false
-  },
-  {
-    "type": "to_eol",
+    "type": "code",
     "named": true
   },
   {
-    "type": "type",
-    "named": false
+    "type": "lang",
+    "named": true
   },
   {
-    "type": "url",
-    "named": false
+    "type": "tok_identifier",
+    "named": true
+  },
+  {
+    "type": "tok_string",
+    "named": true
   },
   {
     "type": "{",

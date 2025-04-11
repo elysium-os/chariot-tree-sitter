@@ -10,59 +10,33 @@
 module.exports = grammar({
   name: "chariot",
 
+  externals: ($) => [
+    $.close_tag,
+    $.code,
+    $.error_sentinel
+  ],
+
   rules: {
-    source_file: ($) => repeat(choice($.recipe, $.directives, $.comment)),
+    source_file: ($) => repeat(seq($.recipe_ref, $.object)),
 
-    comment: ($) => choice(seq("//", /(\\+(.|\r?\n)|[^\\\n])*/)),
+    // Tokens
+    tok_identifier: ($) => /[a-zA-Z][_\.\-a-zA-Z0-9]*/,
+    tok_string: ($) => /"[^"]*"/,
+    tok_code_block: ($) => seq('<', alias(/[a-zA-Z]*/, $.lang), '>', alias(repeat($.code), $.content), $.close_tag),
 
-    // Directives
-    directives: ($) => choice($.import_directive),
-    import_directive: ($) => seq("@import", $.to_eol),
+    // Fragments
+    fragment: ($) => choice(
+      $.list,
+      $.object,
+      $.string,
+      $.recipe_ref,
+      $.code_block
+    ),
 
-    // Helpers
-    to_eol: ($) => /[^\n]*/,
-    block: ($) => seq("{", optional($.block_contents), "}"),
-    block_embed: ($) => seq("@(", /[^\)]*/, ")"),
-    block_contents: ($) =>
-      repeat1(choice($.block_embed, seq("{", $.block_contents, "}"), /[^\}]/)),
-    dependency: ($) =>
-      seq(choice("source/", "target/", "host/", "image/"), $.recipe_name),
-    dependencies: ($) => seq("[", repeat($.dependency), "]"),
-
-    recipe_name: ($) => /[_a-zA-Z][_\.\-a-zA-Z0-9]*/,
-
-    // Recipes
-    recipe: ($) =>
-      choice(
-        seq("source/", $.recipe_name, $.source_rules),
-        seq("target/", $.recipe_name, $.common_rules),
-        seq("host/", $.recipe_name, $.common_rules),
-      ),
-
-    source_rules: ($) => seq("{", repeat($.source_rule), "}"),
-    source_rule: ($) =>
-      choice(
-        seq(field("key", "url"), ":", $.to_eol),
-        seq(
-          field("key", "type"),
-          ":",
-          choice("tar.gz", "tar.xz", "git", "local"),
-        ),
-        seq(field("key", "patch"), ":", $.to_eol),
-        seq(field("key", "b2sum"), ":", $.to_eol),
-        seq(field("key", "commit"), ":", $.to_eol),
-        seq(field("key", "dependencies"), $.dependencies),
-        seq(field("key", "strap"), $.block),
-      ),
-
-    common_rules: ($) => seq("{", repeat($.common_rule), "}"),
-    common_rule: ($) =>
-      choice(
-        seq(field("key", "source"), ":", $.recipe_name),
-        seq(field("key", "dependencies"), $.dependencies),
-        seq(field("key", "configure"), $.block),
-        seq(field("key", "build"), $.block),
-        seq(field("key", "install"), $.block),
-      ),
+    string: ($) => $.tok_string,
+    code_block: ($) => $.tok_code_block,
+    recipe_ref: ($) => seq($.tok_identifier, '/', $.tok_identifier),
+    object: ($) => seq('{', repeat(seq($.tok_identifier, ':', $.fragment, optional(','))), '}'),
+    list: ($) => seq('[', repeat(seq($.fragment, optional(','))), ']')
   },
 });
