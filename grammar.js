@@ -15,9 +15,13 @@ module.exports = grammar({
     $.code,
     $.error_sentinel
   ],
+  
+  extras: $ => [/\s/, $.comment],
 
   rules: {
     source_file: ($) => repeat(seq($.recipe_ref, $.object)),
+    
+    comment: $ => seq("//", /(\\+(.|\r?\n)|[^\\\n])*/),
 
     // Tokens
     tok_identifier: ($) => /[a-zA-Z][_\.\-a-zA-Z0-9]*/,
@@ -35,7 +39,7 @@ module.exports = grammar({
 
     string: ($) => $.tok_string,
     code_block: ($) => $.tok_code_block,
-    recipe_ref: ($) => seq($.tok_identifier, '/', $.tok_identifier),
+    recipe_ref: ($) => seq(optional('*'), $.tok_identifier, '/', $.tok_identifier),
     object: ($) => seq('{', repeat(seq($.tok_identifier, ':', $.fragment, optional(','))), '}'),
     list: ($) => seq('[', repeat(seq($.fragment, optional(','))), ']')
   },
