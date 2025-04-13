@@ -35,6 +35,25 @@
     }
   },
   {
+    "type": "directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "fragment",
+          "named": true
+        },
+        {
+          "type": "tok_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "fragment",
     "named": true,
     "fields": {},
@@ -124,6 +143,10 @@
       "required": false,
       "types": [
         {
+          "type": "directive",
+          "named": true
+        },
+        {
           "type": "object",
           "named": true
         },
@@ -198,6 +221,10 @@
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {

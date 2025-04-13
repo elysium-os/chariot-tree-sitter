@@ -19,7 +19,7 @@ module.exports = grammar({
   extras: $ => [/\s/, $.comment],
 
   rules: {
-    source_file: ($) => repeat(seq($.recipe_ref, $.object)),
+    source_file: ($) => repeat(choice(seq($.recipe_ref, $.object), $.directive)),
     
     comment: $ => seq("//", /(\\+(.|\r?\n)|[^\\\n])*/),
 
@@ -29,6 +29,8 @@ module.exports = grammar({
     tok_code_block: ($) => seq('<', alias(/[a-zA-Z]*/, $.lang), '>', alias(repeat($.code), $.content), $.close_tag),
 
     // Fragments
+    directive: ($) => seq('@', $.tok_identifier, $.fragment),
+
     fragment: ($) => choice(
       $.list,
       $.object,

@@ -5,15 +5,24 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "recipe_ref"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "recipe_ref"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "object"
+              }
+            ]
           },
           {
             "type": "SYMBOL",
-            "name": "object"
+            "name": "directive"
           }
         ]
       }
@@ -74,6 +83,23 @@
         {
           "type": "SYMBOL",
           "name": "close_tag"
+        }
+      ]
+    },
+    "directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tok_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fragment"
         }
       ]
     },
